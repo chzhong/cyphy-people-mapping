@@ -1,0 +1,16 @@
+<package>
+  <description brief="map_creation">
+
+    map_creation 
+
+  </description>
+  <author>liz</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/imitation_mapper</url>
+  <depend package="roscpp"/>
+  <depend package="trajectory_clustering"/>
+
+</package>
+
+
