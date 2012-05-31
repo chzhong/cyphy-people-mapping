@@ -1,0 +1,21 @@
+<package>
+  <description brief="people_tracker">
+
+     people_tracker
+
+  </description>
+  <author>Liz Murphy</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/people_tracker</url>
+  <depend package="roscpp"/>
+  <depend package="roslib"/>
+  <depend package="geometry_msgs"/>
+  <!--depend package="openni"/-->
+  <!--depend package="nite"/-->
+  <depend package="sound_play"/>
+  <depend package="sensor_msgs"/>
+
+</package>
+
+
