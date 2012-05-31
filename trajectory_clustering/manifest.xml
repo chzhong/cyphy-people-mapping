@@ -1,0 +1,21 @@
+<package>
+  <description brief="trajectory_clustering">
+
+     imitation_clustering
+
+  </description>
+  <author>liz</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/trajectory_clustering</url>
+  <depend package="roscpp"/>
+  <depend package="geometry_msgs"/>
+  <depend package="costmap_2d"/>
+  <depend package="nav_msgs"/>
+  <depend package="eigen"/>
+  <depend package="tf"/>
+  <depend package="visualization_msgs"/>
+
+</package>
+
+

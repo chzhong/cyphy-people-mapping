@@ -1,0 +1,13 @@
+<stack>
+  <description brief="people_mapping">people_mapping</description>
+  <author>Maintained by liz</author>
+  <license>BSD</license>  
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/people_mapping</url>
+  <depend stack="common_msgs" /> <!-- nav_msgs, geometry_msgs -->
+  <depend stack="eigen" /> <!-- eigen -->
+  <depend stack="navigation" /> <!-- costmap_2d -->
+  <depend stack="ros" />
+  <depend stack="ros_comm" /> <!-- roscpp -->
+
+</stack>
