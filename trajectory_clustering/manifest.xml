@@ -12,7 +12,6 @@
   <depend package="geometry_msgs"/>
   <depend package="costmap_2d"/>
   <depend package="nav_msgs"/>
-  <depend package="eigen"/>
   <depend package="tf"/>
   <depend package="visualization_msgs"/>
 

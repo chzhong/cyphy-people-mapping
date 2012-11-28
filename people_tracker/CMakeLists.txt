@@ -15,8 +15,8 @@ rosbuild_init()
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 #set the default path for built libraries to the "lib" directory
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
-set(OPEN_NI_UNSTABLE "/home/liz/codescratch/ThirdpartyLibs/kinect/OpenNI/" CACHE STRING "Location of Unstable OpenNI")
-set(OPEN_NITE_UNSTABLE "/home/liz/codescratch/ThirdpartyLibs/kinect/NITE/" CACHE STRING "Location of Unstable NITE")
+set(OPEN_NI_UNSTABLE "/home/liz/codescratch/ThirdpartyLibs/kinect12.04/openni/" CACHE STRING "Location of Unstable OpenNI")
+set(OPEN_NITE_UNSTABLE "/home/liz/codescratch/ThirdpartyLibs/kinect12.04/nite/" CACHE STRING "Location of Unstable NITE")
 include_directories("${OPEN_NI_UNSTABLE}/Include" "${NITE_UNSTABLE}/Include")
 link_directories("${OPEN_NI_UNSTABLE}/Lib" "${NITE_UNSTABLE}/Lib")
 #uncomment if you have defined messages

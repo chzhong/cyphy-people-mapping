@@ -57,7 +57,7 @@ void publishMap()
 {
     if(!(m_grid.numElem() > 0))
         return;
-    std::vector<signed char> theData(m_grid.width()*m_grid.height(),254);
+    std::vector<signed char> theData(m_grid.width()*m_grid.height(),-1);
     double xOrig, yOrig;
     if(!m_grid.GetMsgData(theData,xOrig,yOrig))
         return;

@@ -60,6 +60,7 @@ bool COccupancyGrid::GetMsgData(std::vector<signed char> &data, double &xOrig, d
         int dind = row*width+col;
 
         double prob = 100*(1-1/(1+exp(it->second)));
+        //double prob = 100*(1-1/(1+exp(it->second)));
         prob = round(prob);
         signed char intProb = (signed char) prob;
         if(dind >= 0 && dind < width*height) 
