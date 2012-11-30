@@ -227,6 +227,8 @@ bool Cluster::update(double pX, double pY, int i)
     double xdiff = pX-m_xPoses[i];
     double ydiff = pY-m_yPoses[i];
     m_sigmaPoses[i]=(1-s_dfAlpha)*m_sigmaPoses[i]+s_dfAlpha*(xdiff*xdiff+ydiff*ydiff);
+    if(m_sigmaPoses[i] > 0.6)
+        m_sigmaPoses[i] = 0.6;
     return true;
 }
 

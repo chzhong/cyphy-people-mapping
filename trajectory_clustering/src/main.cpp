@@ -138,7 +138,11 @@ void ClusterCB()
         clusters.updateCurrentCluster(robotx,roboty,atEnd,hasChild);
         double cdist = clusters.clusterDistance(currentTraj);
         if(atEnd==true)
-            ROS_INFO("Reached End of Trajectory");
+        {
+            ROS_INFO("Reached End of Cluster");
+            currentTraj.clear();
+            status = NEW_TRAJ;
+        }
         if(cdist > drift || atEnd)
         {
             bool oldHasChild = clusters.hasChild();

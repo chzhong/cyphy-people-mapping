@@ -9,7 +9,7 @@
 COccupancyGrid::COccupancyGrid()
 {
 	stepSize = 0.05;
-	m_lo = 0;
+	m_lo = 0.0;
 	m_lfree = -0.1386;
 	m_locc = 0.1386;
     m_xMin = std::numeric_limits<int>::max();
@@ -22,7 +22,7 @@ COccupancyGrid::COccupancyGrid()
 COccupancyGrid::COccupancyGrid(double Resolution)
 {
 	stepSize = Resolution;
-	m_lo = 0;
+	m_lo = 0.0;
 	m_lfree = -0.1386;
     m_locc = 0.1386;
 	m_xMin = std::numeric_limits<int>::max();
@@ -61,8 +61,9 @@ bool COccupancyGrid::GetMsgData(std::vector<signed char> &data, double &xOrig, d
 
         double prob = 100*(1-1/(1+exp(it->second)));
         //double prob = 100*(1-1/(1+exp(it->second)));
-        prob = round(prob);
-        signed char intProb = (signed char) prob;
+
+        double Cost = prob/50*100;
+        signed char intProb = (signed char) Cost;
         if(dind >= 0 && dind < width*height) 
             data[dind] = intProb;
         else

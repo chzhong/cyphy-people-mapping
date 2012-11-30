@@ -13,8 +13,9 @@
 
 void ClusterTree::concat_visit()
 {
+    ROS_INFO("Trying to concatenate ...");
     // examine all children at a particular level before moving down the tree
-    for(tree<Cluster>::post_order_iterator it=m_tree.begin_post();it!=m_tree.end_post();++it)
+    for(tree<Cluster>::pre_order_iterator it=m_tree.begin();it!=m_tree.end();++it)
     {
         if(m_tree.number_of_children(it) == 1)
         {
@@ -253,14 +254,14 @@ bool ClusterTree::updateCurrentCluster(double pX, double pY, bool &atEnd, bool &
     }
     if(m_lastUpdated > ind)
     {
-        ROS_INFO("Going backwards along trajectory, forcing atEnd");
-         if(m_tree.number_of_children(m_currentCluster) > 0)
+         ROS_INFO("Going backwards along trajectory, forcing atEnd, doing nothing in reality");
+         //return true;
+     /*    if(m_tree.number_of_children(m_currentCluster) > 0)
              hasChild = true;
         else
             hasChild = false; 
-        atEnd = true;
-        return false;
-
+        atEnd = true;*/
+        //return false;
     }
 
     (*m_currentCluster).update(pX,pY,ind);
@@ -340,7 +341,8 @@ bool ClusterTree::matchChild(Trajectory &traj)
 {
     double temp = std::numeric_limits<double>::max();
     tree<Cluster>::iterator newIt;
-    for(tree<Cluster>::sibling_iterator it = m_tree.begin(m_currentCluster); it!=m_tree.end(m_currentCluster); ++it)
+    //for(tree<Cluster>::sibling_iterator it = m_tree.begin(m_currentCluster); it!=m_tree.end(m_currentCluster); ++it)
+    for(tree<Cluster>::pre_order_iterator it = m_tree.begin(m_currentCluster); it!=m_tree.end(m_currentCluster); ++it)
     {
         int ind_lim = traj.findClosest((*it).endX(),(*it).endY());
         ROS_INFO("Matching trajectory of length %d but only up to element %d",traj.size(),ind_lim);

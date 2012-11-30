@@ -4,7 +4,8 @@
 #include "map_creation/OccupancyGrid.h"
 #include "map_creation/EigenMultivariateNormal.h"
 
-COccupancyGrid m_grid(0.05);
+double RESOLUTION = 0.3;
+COccupancyGrid m_grid(RESOLUTION);
 ros::Publisher costmap_pub;
 float maxX,maxY,minX,minY;
 
@@ -42,7 +43,7 @@ void clusterCallback(const trajectory_clustering::cluster_msgConstPtr &msg)
 
         EigenMultivariateNormal<float,2> gen(mean,cov);
 
-        for(int i=0;i<3000; i++)
+        for(int i=0;i<30; i++)
         {
             Eigen::Matrix<float,2,1> sampleVec;
             gen.nextSample(sampleVec);
@@ -57,18 +58,19 @@ void publishMap()
 {
     if(!(m_grid.numElem() > 0))
         return;
-    std::vector<signed char> theData(m_grid.width()*m_grid.height(),-1);
+    std::vector<signed char> theData(m_grid.width()*m_grid.height(),100);
     double xOrig, yOrig;
     if(!m_grid.GetMsgData(theData,xOrig,yOrig))
         return;
     nav_msgs::OccupancyGrid msg;
     msg.header.stamp = ros::Time::now();
     msg.header.frame_id = "/map";
-    msg.info.resolution = 0.05;
+    msg.info.resolution = RESOLUTION;
     msg.info.width = m_grid.width();
     msg.info.height= m_grid.height();
     msg.info.origin.position.x = xOrig;
     msg.info.origin.position.y = yOrig;
+    msg.info.origin.position.z = 0.0;
     msg.data = theData;
     costmap_pub.publish(msg);
 
